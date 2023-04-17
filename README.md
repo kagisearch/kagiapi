@@ -25,6 +25,9 @@ for result in results:
     print(result.title)
 ```
 
+You can also define KAGI_API_KEY environment variable.
+
+
 ## Example response
 
 ```
