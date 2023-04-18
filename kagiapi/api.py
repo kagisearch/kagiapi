@@ -15,11 +15,10 @@ class KagiClient:
         self.session = requests.Session()
         self.session.headers.update({"Authorization": f"Bot {self.api_key}"})
 
-    def search(self, query, limit=None):
+    def search(self, query, limit=10):
         params = {"q": query}
-
-        if limit is not None:
-            params["limit"] = limit
+        
+        params["limit"] = limit
 
         response = self.session.get(KagiClient.BASE_URL, params=params)
         response.raise_for_status()
