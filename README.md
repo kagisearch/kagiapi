@@ -2,7 +2,7 @@
 
 [![](https://dcbadge.vercel.app/api/server/aDNg6E9szy?compact=true&style=flat)](https://discord.gg/aDNg6E9szy) [![Twitter](https://img.shields.io/twitter/follow/KagiHQ?style=social)](https://twitter.com/KagiHQ) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/license/mit/) 
 
-A Python package for interacting with the Kagi Search API.
+A Python package for interacting with the [Kagi Search API](https://help.kagi.com/kagi/api/search.html).
 
 ## Installation
 
