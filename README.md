@@ -6,13 +6,13 @@ A Python package for interacting with the [Kagi Search API](https://help.kagi.co
 
 ## Installation
 
-```
+```bash
 pip install kagiapi
 ```
 
 ## Usage
 
-```
+```python
 from kagiapi import KagiClient
 
 api_key = "your_api_key"
@@ -30,7 +30,7 @@ You can also define KAGI_API_KEY environment variable.
 
 ## Example response
 
-```
+```json
 {
   "meta": {
     "id": "767c75e8-fc13-4554-bdb3-6bf4989d5d29",
@@ -69,10 +69,9 @@ You can also define KAGI_API_KEY environment variable.
       "url": "https://www.visitarizona.com/grand-canyon/",
       "title": "Grand Canyon (Visitor Guide, Activities &amp; Tours) | Visit Arizona",
       "snippet": "<b>Grand Canyon</b> National Park’s South Rim is the most popular visitor area, with plenty of places to eat, shop and stay the night in area hotels or campsites. The <b>Grand Canyon</b> Railway offers a fun family alternate for a short visit to the <b>canyon</b>. It operates turn-around trips from Williams to the South Rim year-round, with a three-hour window to ..."
-    },
-   
-
-...
+    }
+  ]
+}
 
 ```
 

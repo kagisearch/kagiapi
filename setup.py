@@ -7,6 +7,7 @@ setup(
     install_requires=[
         "requests",
     ],
+    python_requires=">=3.7",
     author="Vladimir Prelovac",
     author_email="vlad@kagi.com",
     description="A Python package for Kagi Search API",
