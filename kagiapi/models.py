@@ -66,3 +66,17 @@ class FastGPTResponse(TypedDict):
     meta: Meta
     data: FastGPTItem
     error: NotRequired[List[Dict[str, Any]]]
+
+
+class EnrichItem(TypedDict):
+    t: int
+    url: NotRequired[str]
+    title: NotRequired[str]
+    snippet: NotRequired[str]
+    published: NotRequired[datetime]
+
+
+class EnrichResponse(TypedDict):
+    meta: Meta
+    data: List[EnrichItem]
+    error: NotRequired[List[Dict[str, Any]]]
