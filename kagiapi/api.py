@@ -26,7 +26,6 @@ class KagiClient:
 
         response = self.session.get(KagiClient.BASE_URL + "/search", params=params)
         response.raise_for_status()
-        print(response.status_code, response.content, response.url)
         return response.json()
 
     def summarize(
@@ -63,7 +62,6 @@ class KagiClient:
             params["cache"] = cache
 
         response = self.session.get(KagiClient.BASE_URL + "/summarize", params=params)
-        print(response.status_code, response.content, response.url)
         response.raise_for_status()
         return response.json()
 
