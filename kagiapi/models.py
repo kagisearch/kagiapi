@@ -1,10 +1,10 @@
 import sys
 
-# You may also pick one without version check, of course
 if sys.version_info < (3, 11):
     from typing_extensions import NotRequired
 else:
     from typing import NotRequired
+
 from typing import List, Dict, Any, TypedDict
 from datetime import datetime
 
@@ -32,6 +32,7 @@ class SearchItem(TypedDict):
     list: NotRequired[List[str]]
 
 
-class SearchResponse(TypedDict):
+class Response(TypedDict):
     meta: Meta
     data: List[SearchItem]
+    error: NotRequired[List[Dict[str, Any]]]
