@@ -1,7 +1,7 @@
 import os
-from typing import Optional, Union, Dict
+from typing import Optional, Union, Dict, Literal
 import requests
-from kagiapi.models import SearchResponse
+from kagiapi.models import Response
 
 
 class KagiClient:
@@ -21,11 +21,50 @@ class KagiClient:
         self.session = requests.Session()
         self.session.headers.update({"Authorization": f"Bot {self.api_key}"})
 
-    def search(self, query: str, limit: int = 10) -> SearchResponse:
+    def search(self, query: str, limit: int = 10) -> Response:
         params: Dict[str, Union[int, str]] = {"q": query, "limit": limit}
 
         response = self.session.get(KagiClient.BASE_URL + "/search", params=params)
         response.raise_for_status()
         print(response.status_code, response.content, response.url)
         json_response = response.json()
-        return SearchResponse(meta=json_response["meta"], data=json_response["data"])
+        return json_response
+
+    def summarize(
+        self,
+        url: str = "",
+        text: str = "",
+        engine: Literal["cecil", "agnes", "daphne", "muriel"] = "cecil",
+        summary_type: Literal["summary", "takeaway"] = "summary",
+        target_language: Optional[str] = None,
+        cache: Optional[bool] = None,
+    ) -> Response:
+        if url and text:
+            raise ValueError(
+                "Parameters url and text are exclusive. You must pass one or the other."
+            )
+
+        params: Dict[str, Union[int, str]] = {
+            "engine": engine,
+            "summary_type": summary_type,
+        }
+        if url:
+            params["url"] = url
+        elif text:
+            params["text"] = text
+        else:
+            raise ValueError(
+                "Parameters url and text are exclusive. You must pass one or the other."
+            )
+
+        if target_language:
+            params["target_language"] = target_language
+
+        if cache:
+            params["cache"] = cache
+
+        response = self.session.get(KagiClient.BASE_URL + "/summarize", params=params)
+        print(response.status_code, response.content, response.url)
+        response.raise_for_status()
+        json_response = response.json()
+        return json_response
