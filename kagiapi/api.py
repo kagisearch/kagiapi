@@ -1,7 +1,12 @@
 import os
 from typing import Optional, Union, Dict, Literal
 import requests
-from kagiapi.models import SearchResponse, SummarizationResponse, FastGPTResponse
+from kagiapi.models import (
+    SearchResponse,
+    SummarizationResponse,
+    FastGPTResponse,
+    EnrichResponse,
+)
 
 
 class KagiClient:
@@ -72,5 +77,12 @@ class KagiClient:
             data["cache"] = cache
 
         response = self.session.post(KagiClient.BASE_URL + "/fastgpt", json=data)
+        response.raise_for_status()
+        return response.json()
+
+    def enrich(self, query: str) -> EnrichResponse:
+        params: Dict[str, Union[int, str]] = {"q": query}
+
+        response = self.session.get(KagiClient.BASE_URL + "/enrich/news", params=params)
         response.raise_for_status()
         return response.json()
