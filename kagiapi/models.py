@@ -13,6 +13,7 @@ class Meta(TypedDict):
     id: str
     node: str
     ms: int
+    api_balance: NotRequired[float]
 
 
 class Image(TypedDict):
@@ -32,7 +33,36 @@ class SearchItem(TypedDict):
     list: NotRequired[List[str]]
 
 
-class Response(TypedDict):
+class SearchResponse(TypedDict):
     meta: Meta
     data: List[SearchItem]
+    error: NotRequired[List[Dict[str, Any]]]
+
+
+class SummarizationItem(TypedDict):
+    output: str
+    tokens: int
+
+
+class SummarizationResponse(TypedDict):
+    meta: Meta
+    data: SummarizationItem
+    error: NotRequired[List[Dict[str, Any]]]
+
+
+class FastGPTReference(TypedDict):
+    title: str
+    snippet: str
+    url: str
+
+
+class FastGPTItem(TypedDict):
+    output: str
+    tokens: int
+    references: List[FastGPTReference]
+
+
+class FastGPTResponse(TypedDict):
+    meta: Meta
+    data: FastGPTItem
     error: NotRequired[List[Dict[str, Any]]]
