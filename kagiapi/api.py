@@ -1,7 +1,7 @@
 import os
 from typing import Optional, Union, Dict, Literal
 import requests
-from kagiapi.models import Response
+from kagiapi.models import SearchResponse, SummarizationResponse, FastGPTResponse
 
 
 class KagiClient:
@@ -21,14 +21,13 @@ class KagiClient:
         self.session = requests.Session()
         self.session.headers.update({"Authorization": f"Bot {self.api_key}"})
 
-    def search(self, query: str, limit: int = 10) -> Response:
+    def search(self, query: str, limit: int = 10) -> SearchResponse:
         params: Dict[str, Union[int, str]] = {"q": query, "limit": limit}
 
         response = self.session.get(KagiClient.BASE_URL + "/search", params=params)
         response.raise_for_status()
         print(response.status_code, response.content, response.url)
-        json_response = response.json()
-        return json_response
+        return response.json()
 
     def summarize(
         self,
@@ -38,7 +37,7 @@ class KagiClient:
         summary_type: Literal["summary", "takeaway"] = "summary",
         target_language: Optional[str] = None,
         cache: Optional[bool] = None,
-    ) -> Response:
+    ) -> SummarizationResponse:
         if url and text:
             raise ValueError(
                 "Parameters url and text are exclusive. You must pass one or the other."
@@ -66,5 +65,14 @@ class KagiClient:
         response = self.session.get(KagiClient.BASE_URL + "/summarize", params=params)
         print(response.status_code, response.content, response.url)
         response.raise_for_status()
-        json_response = response.json()
-        return json_response
+        return response.json()
+
+    def fastgpt(self, query: str, cache: bool = True) -> FastGPTResponse:
+        data: Dict[str, Union[int, str]] = {"query": query}
+
+        if cache:
+            data["cache"] = cache
+
+        response = self.session.post(KagiClient.BASE_URL + "/fastgpt", json=data)
+        response.raise_for_status()
+        return response.json()
