@@ -30,6 +30,8 @@ for result in results["data"]:
     print(result["title"])
 ```
 
+#### Example Response
+
 ```json
 {
   "meta": {
