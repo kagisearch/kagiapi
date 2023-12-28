@@ -6,6 +6,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         "requests",
+        "typing_extensions",
     ],
     python_requires=">=3.7",
     author="Vladimir Prelovac",
