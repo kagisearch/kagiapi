@@ -2,7 +2,7 @@
 
 [![](https://dcbadge.vercel.app/api/server/aDNg6E9szy?compact=true&style=flat)](https://discord.gg/aDNg6E9szy) [![Twitter](https://img.shields.io/twitter/follow/KagiHQ?style=social)](https://twitter.com/KagiHQ) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/license/mit/) 
 
-A Python package for interacting with the [Kagi API](https://help.kagi.com/kagi/api/overview.html).
+A Python package for interacting with the [Kagi API](https://help.kagi.com/kagi/api/overview.html). Get your Kagi API token [here](https://kagi.com/settings?p=api).
 
 ## Installation
 
@@ -23,7 +23,7 @@ You can also define KAGI_API_KEY environment variable.
 
 ### Searh API
 ```py
-query = "steve jobs"
+query = "grand canyon"
 results = kagi.search(query, limit=10)
 
 for result in results["data"]:
