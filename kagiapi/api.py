@@ -63,18 +63,18 @@ class KagiClient:
         if target_language:
             params["target_language"] = target_language
 
-        if cache:
-            params["cache"] = cache
+        if cache is not None:
+            params["cache"] = "true" if cache else "false"
 
         response = self.session.get(KagiClient.BASE_URL + "/summarize", params=params)
         response.raise_for_status()
         return response.json()
 
-    def fastgpt(self, query: str, cache: bool = True) -> FastGPTResponse:
+    def fastgpt(self, query: str, cache: Optional[bool] = True) -> FastGPTResponse:
         data: Dict[str, Union[int, str]] = {"query": query}
 
-        if cache:
-            data["cache"] = cache
+        if cache is not None:
+            data["cache"] = "true" if cache else "false"
 
         response = self.session.post(KagiClient.BASE_URL + "/fastgpt", json=data)
         response.raise_for_status()
