@@ -19,9 +19,9 @@ api_key = "your_api_key"
 kagi = KagiClient(api_key)
 ```
 
-You can also define KAGI_API_KEY environment variable.
+You can also define `KAGI_API_KEY` environment variable.
 
-### Searh API
+### Search API
 ```py
 query = "grand canyon"
 results = kagi.search(query, limit=10)
