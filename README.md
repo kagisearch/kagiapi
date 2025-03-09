@@ -27,7 +27,11 @@ query = "grand canyon"
 results = kagi.search(query, limit=10)
 
 for result in results["data"]:
-    print(result["title"])
+    # t = 0 is search result, t = 1 is related searches
+    if result['t'] == 0:
+        print(result["title"])
+    else:
+        print(result["list"])
 ```
 
 #### Example Response
