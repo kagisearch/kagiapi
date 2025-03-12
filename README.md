@@ -1,6 +1,6 @@
 # Kagi API Python Package
 
-[![](https://dcbadge.vercel.app/api/server/aDNg6E9szy?compact=true&style=flat)](https://discord.gg/aDNg6E9szy) [![Twitter](https://img.shields.io/twitter/follow/KagiHQ?style=social)](https://twitter.com/KagiHQ) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/license/mit/) 
+[![](https://dcbadge.vercel.app/api/server/Yk8Aj8AxGw?compact=true&style=flat)](https://discord.gg/Yk8Aj8AxGw) [![Twitter](https://img.shields.io/twitter/follow/KagiHQ?style=social)](https://twitter.com/KagiHQ) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/license/mit/) 
 
 A Python package for interacting with the [Kagi API](https://help.kagi.com/kagi/api/overview.html). Get your Kagi API token [here](https://kagi.com/settings?p=api).
 
